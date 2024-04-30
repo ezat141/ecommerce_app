@@ -21,4 +21,8 @@ class AppLink {
   static const String homepage = "$server/home";
   // products
   static const String products = "$server/products/category";
+
+  // Favorite
+  static const String favoriteAdd = "$server/favorites/add";
+  static const String favoriteRemove = "$server/favorites/remove";
 }

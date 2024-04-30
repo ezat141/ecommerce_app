@@ -11,6 +11,8 @@ class ProductsModel {
   int? productDiscount;
   String? productCat;
   String? productDate;
+  bool? favorite;
+
 
   ProductsModel(
       {this.sId,
@@ -24,7 +26,8 @@ class ProductsModel {
       this.productPrice,
       this.productDiscount,
       this.productCat,
-      this.productDate});
+      this.productDate,
+      this.favorite});
 
   ProductsModel.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
@@ -39,6 +42,7 @@ class ProductsModel {
     productDiscount = json['product_discount'];
     productCat = json['product_cat'];
     productDate = json['product_date'];
+    favorite = json['favorite'];
   }
 
   Map<String, dynamic> toJson() {
@@ -55,6 +59,7 @@ class ProductsModel {
     data['product_discount'] = this.productDiscount;
     data['product_cat'] = this.productCat;
     data['product_date'] = this.productDate;
+    data['favorite'] = this.favorite;
     return data;
   }
 }

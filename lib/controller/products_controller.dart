@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/class/statusrequest.dart';
 import 'package:ecommerce_app/core/functions/handlingdatacontroller.dart';
+import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/products_data.dart';
 import 'package:ecommerce_app/data/model/productsmodel.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,9 @@ class ProductsControllerImp extends ProductsController {
   ProductsData testData = ProductsData(Get.find());
   List data = [];
 
+
   late StatusRequest statusRequest;
+  MyServices myServices = Get.find();
 
   @override
   void onInit() {
@@ -47,7 +50,7 @@ class ProductsControllerImp extends ProductsController {
   getItems(categoryid) async {
     data.clear();
     statusRequest = StatusRequest.loading;
-    var response = await testData.getData(categoryid);
+    var response = await testData.getData(categoryid, myServices.sharedPreferences.getString("id")!);
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {

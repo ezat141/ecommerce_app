@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/controller/favorite_controller.dart';
 import 'package:ecommerce_app/controller/products_controller.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/data/model/productsmodel.dart';
@@ -64,12 +65,25 @@ class CustomListProducts extends GetView<ProductsControllerImp> {
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               fontFamily: "sans")),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.favorite,
-                            color: AppColor.primaryColor,
-                          ))
+                      GetBuilder<FavoriteController>(
+                        builder: (controller) => IconButton(
+                            onPressed: () {
+                              if(controller.isFavorite[productsModel.sId] == true){
+                                controller.setFavorite(productsModel.sId, false);
+                                controller.removeFavorite(productsModel.sId!);
+                              } else{
+                                controller.setFavorite(productsModel.sId, true);
+                                controller.addFavorite(productsModel.sId!);
+                              }
+                            },
+                            icon: Icon(
+                              controller.isFavorite[productsModel.sId] == true
+                              
+                              ?Icons.favorite
+                              : Icons.favorite_border_outlined,
+                              color: AppColor.primaryColor,
+                            )),
+                      )
                     ],
                   )
                 ]),

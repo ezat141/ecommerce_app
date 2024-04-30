@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/controller/favorite_controller.dart';
 import 'package:ecommerce_app/controller/products_controller.dart';
 import 'package:ecommerce_app/core/class/handlingdataview.dart';
 import 'package:ecommerce_app/data/model/productsmodel.dart';
@@ -13,6 +14,8 @@ class Products extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(ProductsControllerImp());
+    FavoriteController controllerFav = Get.put(FavoriteController());
+
 
     return Scaffold(
       body: Container(
@@ -34,6 +37,7 @@ class Products extends StatelessWidget {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2, childAspectRatio: 0.7),
                   itemBuilder: (BuildContext context, index) {
+                    controllerFav.isFavorite[controller.data[index]["_id"]] = controller.data[index]["favorite"];
                     return CustomListProducts(
                       productsModel:
                           ProductsModel.fromJson(controller.data[index]),
