@@ -41,16 +41,22 @@ class LoginControllerImp extends LoginController {
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
           // data.addAll(response['data']);
-          myServices.sharedPreferences.setString("id", response['data']['user']['_id']);
-          myServices.sharedPreferences
-              .setString("username", response['data']['user']['username']);
-          myServices.sharedPreferences
-              .setString("email", response['data']['user']['email']);
-          myServices.sharedPreferences
-              .setString("phone", response['data']['user']['users_phone']);
-          myServices.sharedPreferences.setString("step", "2");
+          if (response['data']['user']['users_approve'] == true) {
+            myServices.sharedPreferences
+                .setString("id", response['data']['user']['_id']);
+            myServices.sharedPreferences
+                .setString("username", response['data']['user']['username']);
+            myServices.sharedPreferences
+                .setString("email", response['data']['user']['email']);
+            myServices.sharedPreferences
+                .setString("phone", response['data']['user']['users_phone']);
+            myServices.sharedPreferences.setString("step", "2");
 
-          Get.offNamed(AppRoute.homepage);
+            Get.offNamed(AppRoute.homepage);
+          } else {
+            Get.offNamed(AppRoute.verfiyCodeSignUp,
+                arguments: {"email": email.text});
+          }
         } else {
           Get.defaultDialog(
               title: "ُWarning", middleText: "Email Or Password Not Correct");

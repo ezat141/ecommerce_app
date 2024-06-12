@@ -8,6 +8,7 @@ class AppLink {
   static const String signUp = "$server/auth/register";
   static const String login = "$server/auth/login";
   static const String verifycodessignup = "$server/auth/verify-code";
+  static const String resendverifycodesignup = "$server/auth/resend-verify-code";
 
   // ================================= ForgetPassword ========================== //
 
@@ -25,4 +26,6 @@ class AppLink {
   // Favorite
   static const String favoriteAdd = "$server/favorites/add";
   static const String favoriteRemove = "$server/favorites/remove";
+  static const String favoriteView = "$server/favorites/getFavoritesWithDetails";
+  static const String removeFromFavorites = "$server/favorites/removeFromFavorites";
 }

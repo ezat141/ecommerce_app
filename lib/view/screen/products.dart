@@ -22,9 +22,13 @@ class Products extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         child: ListView(children: [
           CustomAppBar(
-              titleappbar: "Find Product",
-              onPressedIcon: () {},
-              onPressedSearch: () {}),
+            titleappbar: "Find Product",
+            onPressedIcon: () {},
+            onPressedSearch: () {},
+            onPressedIconFavorite: () {
+              
+            },
+          ),
           const SizedBox(height: 20),
           const ListCategoriesProducts(),
           GetBuilder<ProductsControllerImp>(

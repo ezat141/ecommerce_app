@@ -13,5 +13,6 @@ class AppRoute {
   static const String homepage = "/homepage";
   static const String products = "/products"; 
   static const String productdetails = "/productdetails";
+  static const String myfavroite = "/myfavroite"; 
   
 }

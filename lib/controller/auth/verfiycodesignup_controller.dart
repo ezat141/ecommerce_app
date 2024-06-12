@@ -52,4 +52,7 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
     email = Get.arguments['email'];
     super.onInit();
   }
+  resend(){
+    verfiyCodeSignUpData.resendData(email!);
+  }
 }
