@@ -3,6 +3,8 @@ import 'package:ecommerce_app/core/constant/routes.dart';
 import 'package:ecommerce_app/core/functions/handlingdatacontroller.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/home_data.dart';
+import 'package:ecommerce_app/data/model/productsmodel.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class HomeController extends GetxController {
@@ -64,4 +66,9 @@ class HomeControllerImp extends HomeController {
       "catid": categoryid
     });
   }
+
+  goToPageProductDetails(itemsModel) {
+    Get.toNamed("productdetails", arguments: {"itemsmodel": itemsModel});
+  }
 }
+

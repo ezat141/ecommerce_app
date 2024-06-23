@@ -22,10 +22,30 @@ class AppLink {
   static const String homepage = "$server/home";
   // products
   static const String products = "$server/products/category";
+  static const String searchitems = "$server/products/search";
 
   // Favorite
   static const String favoriteAdd = "$server/favorites/add";
   static const String favoriteRemove = "$server/favorites/remove";
   static const String favoriteView = "$server/favorites/getFavoritesWithDetails";
   static const String removeFromFavorites = "$server/favorites/removeFromFavorites";
+  // Cart 
+  static const String cartview   = "$server/cart/getCart";
+  static const String cartadd    = "$server/cart/addToCart";
+  static const String cartdelete = "$server/cart/removeCartItem";
+  static const String cartgetcountitems = "$server/cart/getCountItems";
+
+   // Address
+
+  static const String addressView = "$server/address/view";
+  static const String addressAdd = "$server/address/add";
+  static const String addressEdit = "$server/address/edit";
+  static const String addressDelete = "$server/address/delete";
+
+  // Coupon 
+
+  static const String checkcoupon  = "$server/coupons/check";
+  // Checkout 
+
+  static const String checkout  = "$server/orders/checkout";
 }

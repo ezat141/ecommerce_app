@@ -12,6 +12,10 @@ class HomeData {
 
   Future<Map<String, dynamic>> getData() async {
     var response = await crud.getData(AppLink.homepage);
-    return response.fold((l) => throw l, (r) => r);
+    return response.fold((l) =>  throw l, (r) => r);
+  }
+  searchData(String search) async {
+    var response = await crud.postData(AppLink.searchitems, {"query": search});
+    return response.fold((l) => l, (r) => r);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/view/screen/home.dart';
+import 'package:ecommerce_app/view/screen/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,21 +29,26 @@ class HomeScreenControllerImp extends HomeScreenController {
         )
       ],
     ),
-    const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Text('Favorite'),
-        )
-      ],
-    ),
+    const Settings()
   ];
 
-  List  titlebottomappbar = [
-    "home" , 
-    "settings" , 
-    "profile" , 
-    "favorite"
+  List  bottomappbar = [
+    {
+      "title": "home",
+      "icon": Icons.home,
+    },
+    {
+      "title": "na",
+      "icon": Icons.notifications_active_outlined,
+    },
+    {
+      "title": "profile",
+      "icon": Icons.person,
+    },
+    {
+      "title": "settings",
+      "icon": Icons.settings,
+    },
   ] ;  
   @override
   void changePage(int currentpage) {
