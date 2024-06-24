@@ -80,7 +80,7 @@ class CheckoutController extends GetxController {
       "orders_usersid": myServices.sharedPreferences.getString("id"),
       "orders_addressid": addressid.toString(),
       "orders_type": deliveryType,
-      "orders_pricedelivery": "10",
+      "orders_pricedelivery": 10,
       "orders_price": priceorders,
       "orders_couponid": couponid,
       "orders_paymeentmethod": paymentMethod

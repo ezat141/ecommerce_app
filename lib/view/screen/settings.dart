@@ -46,6 +46,13 @@ class Settings extends StatelessWidget {
                 ),
                 ListTile(
                   onTap: () {
+                    Get.toNamed(AppRoute.orderspending);
+                  },
+                  trailing: Icon(Icons.card_travel),
+                  title: Text("Orders"),
+                ),
+                ListTile(
+                  onTap: () {
                     Get.toNamed(AppRoute.addressview);
                   },
                   trailing: Icon(Icons.location_on_outlined),
