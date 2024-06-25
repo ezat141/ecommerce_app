@@ -44,6 +44,8 @@ class LoginControllerImp extends LoginController {
           if (response['data']['user']['users_approve'] == true) {
             myServices.sharedPreferences
                 .setString("id", response['data']['user']['_id']);
+            String userid = myServices.sharedPreferences.getString("id")!;
+            
             myServices.sharedPreferences
                 .setString("username", response['data']['user']['username']);
             myServices.sharedPreferences
@@ -51,6 +53,9 @@ class LoginControllerImp extends LoginController {
             myServices.sharedPreferences
                 .setString("phone", response['data']['user']['users_phone']);
             myServices.sharedPreferences.setString("step", "2");
+
+            // FirebaseMessaging.instance.subscribeToTopic("users");
+            // FirebaseMessaging.instance.subscribeToTopic("users${userid}");
 
             Get.offNamed(AppRoute.homepage);
           } else {
