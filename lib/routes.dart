@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/core/constant/routes.dart';
 import 'package:ecommerce_app/core/middleware/mymiddleware.dart';
+import 'package:ecommerce_app/view/orders/archive.dart';
+import 'package:ecommerce_app/view/orders/details.dart';
 import 'package:ecommerce_app/view/orders/pending.dart';
 import 'package:ecommerce_app/view/screen/address/view.dart';
 import 'package:ecommerce_app/view/screen/auth/forgetpassword/forgetpassword.dart';
@@ -36,7 +38,6 @@ import 'package:get/get.dart';
 List<GetPage<dynamic>>? routes = [
   GetPage(
       name: "/", page: () => const Language(), middlewares: [MyMiddleWare()]),
-            
 
   GetPage(name: AppRoute.cart, page: () => const Cart()),
 
@@ -76,13 +77,13 @@ List<GetPage<dynamic>>? routes = [
       name: AppRoute.verfiyCodeSignUp, page: () => const VerfiyCodeSignUp()),
   GetPage(name: AppRoute.homepage, page: () => const HomeScreen()),
   GetPage(name: AppRoute.products, page: () => const Products()),
-  GetPage(name: AppRoute.productdetails, page: () => const  ProductDetails()),
+  GetPage(name: AppRoute.productdetails, page: () => const ProductDetails()),
   GetPage(name: AppRoute.myfavroite, page: () => const MyFavorite()),
   //
   GetPage(name: AppRoute.addressview, page: () => const AddressView()),
-  // GetPage(name: AppRoute.addressadd, page: () => const AddressAdd()), 
+  // GetPage(name: AppRoute.addressadd, page: () => const AddressAdd()),
   GetPage(name: AppRoute.checkout, page: () => const Checkout()),
-    GetPage(name: AppRoute.orderspending, page: () => const OrdersPending()),
-
-
+  GetPage(name: AppRoute.orderspending, page: () => const OrdersPending()),
+  GetPage(name: AppRoute.ordersdetails, page: () => const OrdersDetails()),
+  GetPage(name: AppRoute.ordersarchive, page: () => const OrdersArchiveView()),
 ];

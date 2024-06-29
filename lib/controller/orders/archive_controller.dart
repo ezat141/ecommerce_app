@@ -2,13 +2,12 @@
 import 'package:ecommerce_app/core/class/statusrequest.dart';
 import 'package:ecommerce_app/core/functions/handlingdatacontroller.dart';
 import 'package:ecommerce_app/core/services/services.dart';
-import 'package:ecommerce_app/data/datasource/remote/orders/pending_data.dart';
+import 'package:ecommerce_app/data/datasource/remote/orders/archive_data.dart';
 import 'package:ecommerce_app/data/model/ordersmodel.dart';
 import 'package:get/get.dart';
 
-class OrdersPendingController extends GetxController {
-  
-  OrdersPendingData ordersPendingData = OrdersPendingData(Get.find());
+class OrdersArchiveController extends GetxController {
+  OrdersArchiveData ordersArchiveData = OrdersArchiveData(Get.find());
 
   List<OrdersModel> data = [];
 
@@ -45,11 +44,12 @@ class OrdersPendingController extends GetxController {
       return "Archive";
     }
   }
+
   getOrders() async {
     data.clear();
     statusRequest = StatusRequest.loading;
     update();
-    var response = await ordersPendingData
+    var response = await ordersArchiveData
         .getData(myServices.sharedPreferences.getString("id")!);
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
@@ -66,24 +66,6 @@ class OrdersPendingController extends GetxController {
     update();
   }
 
-  deleteOrder(int orderid) async {
-    data.clear();
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await ordersPendingData.deleteData(orderid);
-    print("=============================== Controller $response ");
-    statusRequest = handlingData(response);
-    if (StatusRequest.success == statusRequest) {
-      // Start backend
-      if (response['status'] == "success") {
-        refrehOrder();
-      } else {
-        statusRequest = StatusRequest.failure;
-      }
-      // End
-    }
-    update();
-  }
 
   refrehOrder() {
     getOrders();

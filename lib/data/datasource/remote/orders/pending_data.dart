@@ -9,4 +9,9 @@ class OrdersPendingData {
         await crud.postData(AppLink.pendingorders, {"orders_usersid": userid});
     return response.fold((l) => l, (r) => r);
   }
+
+  deleteData(int orderid) async {
+    var response = await crud.postData(AppLink.ordersdelete, {"orders_id": orderid});
+    return response.fold((l) => l, (r) => r);
+  }
 }

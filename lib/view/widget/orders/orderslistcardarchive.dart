@@ -1,4 +1,5 @@
-import 'package:ecommerce_app/controller/orders/pending_controller.dart';
+
+import 'package:ecommerce_app/controller/orders/archive_controller.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/core/constant/routes.dart';
 import 'package:ecommerce_app/data/model/ordersmodel.dart';
@@ -6,9 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
 
-class CardOrdersList extends GetView<OrdersPendingController> {
+class CardOrdersListArchive extends GetView<OrdersArchiveController> {
   final OrdersModel listdata;
-  const CardOrdersList({Key? key, required this.listdata}) : super(key: key);
+
+  const CardOrdersListArchive({Key? key, required this.listdata})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class CardOrdersList extends GetView<OrdersPendingController> {
             children: [
               Row(
                 children: [
-                  Text("Order Number : #${listdata.ordersId} ",
+                  Text("Order Number : #${listdata.ordersId}",
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold)),
                   const Spacer(),
@@ -33,10 +36,10 @@ class CardOrdersList extends GetView<OrdersPendingController> {
                   )
                 ],
               ),
-              Divider(),
+              const Divider(),
               Text(
                   "Order Type : ${controller.printOrderType(listdata.ordersType!.toString())}"),
-              Text("Order Price : ${listdata.ordersPrice} \$ "),
+              Text("Order Price : ${listdata.ordersPrice} \$"),
               Text("Delivery Price : ${listdata.ordersPricedelivery} \$ "),
               Text(
                   "Payment Method : ${controller.printPaymentMethod(listdata.ordersPaymeentmethod!.toString())} "),
@@ -59,16 +62,6 @@ class CardOrdersList extends GetView<OrdersPendingController> {
                     textColor: AppColor.secondColor,
                     child: const Text("Details"),
                   ),
-                  SizedBox(width: 10),
-                  if (listdata.ordersStatus == 0)
-                    MaterialButton(
-                      onPressed: () {
-                        controller.deleteOrder(listdata.ordersId!);
-                      },
-                      color: AppColor.thirdColor,
-                      textColor: AppColor.secondColor,
-                      child: const Text("Delete"),
-                    )
                 ],
               ),
             ],
