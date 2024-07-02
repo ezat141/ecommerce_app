@@ -24,6 +24,8 @@ class AppLink {
   // products
   static const String products = "$server/products/category";
   static const String searchitems = "$server/products/search";
+    static const String offers = "$server/products/getOffers";
+
 
   // Favorite
   static const String favoriteAdd = "$server/favorites/add";

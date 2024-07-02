@@ -5,6 +5,7 @@ import 'package:ecommerce_app/core/constant/image_asset.dart';
 import 'package:ecommerce_app/core/constant/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
@@ -71,7 +72,9 @@ class Settings extends StatelessWidget {
                   title: Text("About us"),
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () async {
+                    await launchUrl(Uri.parse("tel: +20123456789")); 
+                  },
                   trailing: Icon(Icons.phone_callback_outlined),
                   title: Text("Contact us"),
                 ),

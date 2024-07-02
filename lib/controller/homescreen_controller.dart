@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/view/screen/offers.dart';
 import 'package:ecommerce_app/view/screen/home.dart';
 import 'package:ecommerce_app/view/screen/settings.dart';
 import 'package:flutter/material.dart';
@@ -21,14 +22,7 @@ class HomeScreenControllerImp extends HomeScreenController {
         )
       ],
     ),
-    const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Text('Profile'),
-        )
-      ],
-    ),
+    const OffersView(),
     const Settings()
   ];
 
