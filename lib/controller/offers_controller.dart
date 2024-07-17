@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/core/class/statusrequest.dart';
 import 'package:ecommerce_app/core/functions/handlingdatacontroller.dart';
 import 'package:ecommerce_app/data/datasource/remote/offers_data.dart';
-import 'package:ecommerce_app/data/datasource/remote/test_data.dart';
 import 'package:ecommerce_app/data/model/productsmodel.dart';
 import 'package:get/get.dart';
 

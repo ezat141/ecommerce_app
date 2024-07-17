@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:ecommerce_app/core/class/statusrequest.dart';
 import 'package:ecommerce_app/core/functions/handlingdatacontroller.dart';
 import 'package:ecommerce_app/data/datasource/remote/orders/details_data.dart';

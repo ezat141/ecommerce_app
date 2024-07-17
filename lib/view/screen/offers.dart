@@ -16,6 +16,8 @@ class OffersView extends StatelessWidget {
     return  GetBuilder<OffersController>(
       builder: (controller) => HandlingDataView(statusRequest: controller.statusRequest, 
       widget: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
         itemCount: controller.data.length,
         itemBuilder: ((context, index) => CustomListProductsOffers(
                       productsModel:

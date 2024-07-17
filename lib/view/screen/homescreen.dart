@@ -1,3 +1,4 @@
+import 'dart:io';
 
 import 'package:ecommerce_app/controller/homescreen_controller.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
@@ -15,7 +16,7 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<HomeScreenControllerImp>(
         builder: (controller) => Scaffold(
               floatingActionButton: FloatingActionButton(
-                backgroundColor: AppColor.primaryColor,
+                  backgroundColor: AppColor.primaryColor,
                   onPressed: () {
                     Get.toNamed(AppRoute.cart);
                   },
@@ -23,7 +24,25 @@ class HomeScreen extends StatelessWidget {
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerDocked,
               bottomNavigationBar: const CustomBottomAppBarHome(),
-              body: controller.listPage.elementAt(controller.currentpage),
+              body: PopScope(
+                  child: controller.listPage.elementAt(controller.currentpage),
+                  onPopInvoked: (shouldPop) async {
+                    await Get.defaultDialog(
+                      title: "warning",
+                      titleStyle: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.primaryColor),
+                      middleText: "Are you sure you want to exit?",
+                      onCancel: () {},
+                      cancelTextColor: AppColor.secondColor,
+                      confirmTextColor: AppColor.secondColor,
+                      buttonColor: AppColor.thirdColor,
+                      onConfirm: () {
+                        exit(0);
+                      },
+                    );
+                    shouldPop = false;
+                  }),
             ));
   }
 }

@@ -8,6 +8,8 @@ class OrdersModel {
   int? ordersPrice;
   int? ordersTotalprice;
   String? ordersCouponid;
+  int? ordersRating;
+  String? ordersNoterating;
   int? ordersPaymeentmethod;
   int? ordersStatus;
   String? ordersDatetime;
@@ -29,6 +31,8 @@ class OrdersModel {
       this.ordersPrice,
       this.ordersTotalprice,
       this.ordersCouponid,
+      this.ordersRating,
+      this.ordersNoterating,
       this.ordersPaymeentmethod,
       this.ordersStatus,
       this.ordersDatetime,
@@ -50,6 +54,8 @@ class OrdersModel {
     ordersPrice = json['orders_price'];
     ordersTotalprice = json['orders_totalprice'];
     ordersCouponid = json['orders_couponid'];
+    ordersRating = json['orders_rating'];
+    ordersNoterating = json['orders_noterating'];
     ordersPaymeentmethod = json['orders_paymeentmethod'];
     ordersStatus = json['orders_status'];
     ordersDatetime = json['orders_datetime'];
@@ -73,6 +79,8 @@ class OrdersModel {
     data['orders_price'] = this.ordersPrice;
     data['orders_totalprice'] = this.ordersTotalprice;
     data['orders_couponid'] = this.ordersCouponid;
+    data['orders_rating'] = this.ordersRating;
+    data['orders_noterating'] = this.ordersNoterating;
     data['orders_paymeentmethod'] = this.ordersPaymeentmethod;
     data['orders_status'] = this.ordersStatus;
     data['orders_datetime'] = this.ordersDatetime;

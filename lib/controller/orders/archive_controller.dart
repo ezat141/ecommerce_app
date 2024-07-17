@@ -66,6 +66,28 @@ class OrdersArchiveController extends GetxController {
     update();
   }
 
+  submitRating(int ordersId, double rating, String comment) async {
+    data.clear();
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await ordersArchiveData
+        .rating(ordersId, rating.toInt(), comment);
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      // Start backend
+      if (response['status'] == "success") {
+        getOrders();
+        
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+      // End
+    }
+    update();
+
+  }
+
 
   refrehOrder() {
     getOrders();

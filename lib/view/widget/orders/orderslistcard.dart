@@ -33,7 +33,7 @@ class CardOrdersList extends GetView<OrdersPendingController> {
                   )
                 ],
               ),
-              Divider(),
+              const Divider(),
               Text(
                   "Order Type : ${controller.printOrderType(listdata.ordersType!.toString())}"),
               Text("Order Price : ${listdata.ordersPrice} \$ "),
@@ -59,7 +59,7 @@ class CardOrdersList extends GetView<OrdersPendingController> {
                     textColor: AppColor.secondColor,
                     child: const Text("Details"),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   if (listdata.ordersStatus == 0)
                     MaterialButton(
                       onPressed: () {
