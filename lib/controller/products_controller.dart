@@ -18,6 +18,8 @@ class ProductsControllerImp extends ProductsController {
   int? selectedCat;
 
   ProductsData testData = ProductsData(Get.find());
+
+  String deliveryTime = "";
   List data = [];
 
 
@@ -32,6 +34,7 @@ class ProductsControllerImp extends ProductsController {
 
   @override
   intialData() {
+    deliveryTime = myServices.sharedPreferences.getString("deliverytime")!;
     categories = Get.arguments['categories'];
     selectedCat = Get.arguments['selectedcat'];
     catid = Get.arguments['catid'];

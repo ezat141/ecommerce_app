@@ -3,12 +3,14 @@ import 'package:ecommerce_app/core/constant/routes.dart';
 import 'package:ecommerce_app/core/functions/handlingdatacontroller.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/home_data.dart';
+import 'package:ecommerce_app/data/model/productsmodel.dart';
 import 'package:get/get.dart';
 
 abstract class HomeController extends GetxController {
   initialData();
   getdata();
   goToItems(List categories, int selectedCat, String categoryid);
+  goToPageProductDetails(ProductsModel productsModel);
 }
 
 class HomeControllerImp extends HomeController {
@@ -17,11 +19,16 @@ class HomeControllerImp extends HomeController {
   String? username;
   String? id;
 
+  String titleHomeCard = "";
+  String bodyHomeCard = "";
+  int? deliveryTime;
+
   HomeData homedata = HomeData(Get.find());
 
   // List data = [];
   List categories = [];
   List products = [];
+  List settingsdata = [];
 
   late StatusRequest statusRequest;
 
@@ -48,6 +55,12 @@ class HomeControllerImp extends HomeController {
       if (response['status'] == "success") {
         categories.addAll(response['categories']);
         products.addAll(response['products']);
+        settingsdata.addAll(response['settings']);
+        titleHomeCard = settingsdata[0]['setting_name'];
+        bodyHomeCard = settingsdata[0]['settings_bodyhome'];
+        deliveryTime = settingsdata[0]['settings_deliverytime'];
+        myServices.sharedPreferences
+            .setString("deliverytime", deliveryTime.toString());
       } else {
         Get.defaultDialog(title: "ُWarning", middleText: "Email Not Found");
         statusRequest = StatusRequest.failure;
@@ -65,8 +78,8 @@ class HomeControllerImp extends HomeController {
     });
   }
 
-  goToPageProductDetails(itemsModel) {
-    Get.toNamed("productdetails", arguments: {"itemsmodel": itemsModel});
+  @override
+  goToPageProductDetails(ProductsModel productsModel) {
+    Get.toNamed("productdetails", arguments: {"productsModel": productsModel});
   }
 }
-

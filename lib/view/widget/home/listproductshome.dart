@@ -22,41 +22,44 @@ class ListProductsHome extends GetView<HomeControllerImp> {
   }
 }
 
-class ItemsHome extends StatelessWidget {
+class ItemsHome extends GetView<HomeControllerImp> {
   final ProductsModel productsModel;
   const ItemsHome({Key? key, required this.productsModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          margin: const EdgeInsets.symmetric(horizontal: 10),
-          child: Image.network(
-            "${productsModel.image}",
-            height: 100,
-            width: 150,
-            fit: BoxFit.fill,
+    return InkWell(
+      onTap: () => controller.goToPageProductDetails(productsModel),
+      child: Stack(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 10),
+            child: Image.network(
+              "${productsModel.image}",
+              height: 100,
+              width: 150,
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-              color: AppColor.black.withOpacity(0.3),
-              borderRadius: BorderRadius.circular(20)),
-          height: 120,
-          width: 200,
-        ),
-        Positioned(
-            left: 10,
-            child: Text(
-              "${productsModel.productName}",
-              style: const TextStyle(
-                  color: Colors.white,
-                  // fontWeight: FontWeight.bold,
-                  fontSize: 14),
-            ))
-      ],
+          Container(
+            decoration: BoxDecoration(
+                color: AppColor.black.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(20)),
+            height: 120,
+            width: 200,
+          ),
+          Positioned(
+              left: 10,
+              child: Text(
+                "${productsModel.productName}",
+                style: const TextStyle(
+                    color: Colors.white,
+                    // fontWeight: FontWeight.bold,
+                    fontSize: 14),
+              ))
+        ],
+      ),
     );
   }
 }
