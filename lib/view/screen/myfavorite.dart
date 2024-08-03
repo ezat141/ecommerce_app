@@ -17,14 +17,14 @@ class MyFavorite extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: GetBuilder<MyFavoriteController>(
             builder: ((controller) => ListView(children: [
-                  CustomAppBar(
-                    titleappbar: "Find Product",
-                    onPressedIcon: () {},
-                    onPressedSearch: () {},
-                    onPressedIconFavorite: () {
-                      Get.toNamed(AppRoute.myfavroite);
-                    },
-                  ),
+                  // CustomAppBar(
+                  //   titleappbar: "Find Product",
+                  //   onPressedIcon: () {},
+                  //   onPressedSearch: () {},
+                  //   onPressedIconFavorite: () {
+                  //     Get.toNamed(AppRoute.myfavroite);
+                  //   },
+                  // ),
                   const SizedBox(height: 20) ,
                   HandlingDataView(
                       statusRequest: controller.statusRequest,

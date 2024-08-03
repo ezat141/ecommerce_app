@@ -1,11 +1,13 @@
+import 'package:ecommerce_app/controller/home_controller.dart';
 import 'package:ecommerce_app/core/class/statusrequest.dart';
 import 'package:ecommerce_app/core/functions/handlingdatacontroller.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/products_data.dart';
 import 'package:ecommerce_app/data/model/productsmodel.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-abstract class ProductsController extends GetxController {
+abstract class ProductsController extends SearchMixController {
   intialData();
   changeCat(int val, String catval);
   getItems(String categoryid);
@@ -22,12 +24,12 @@ class ProductsControllerImp extends ProductsController {
   String deliveryTime = "";
   List data = [];
 
-
   late StatusRequest statusRequest;
   MyServices myServices = Get.find();
 
   @override
   void onInit() {
+    search = TextEditingController();
     intialData();
     super.onInit();
   }
@@ -53,7 +55,8 @@ class ProductsControllerImp extends ProductsController {
   getItems(categoryid) async {
     data.clear();
     statusRequest = StatusRequest.loading;
-    var response = await testData.getData(categoryid, myServices.sharedPreferences.getString("id")!);
+    var response = await testData.getData(
+        categoryid, myServices.sharedPreferences.getString("id")!);
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
